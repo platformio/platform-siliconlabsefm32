@@ -1,0 +1,17 @@
+{
+  "build": {
+    "cpu": "cortex-m3", 
+    "f_cpu": "48000000L", 
+    "mcu": "efm32gg990f1024"
+  }, 
+  "frameworks": [
+    "mbed"
+  ], 
+  "name": "Silicon Labs EFM32GG-STK3700 (Giant Gecko)", 
+  "upload": {
+    "maximum_ram_size": 131072, 
+    "maximum_size": 1048576
+  }, 
+  "url": "https://developer.mbed.org/platforms/EFM32-Giant-Gecko/", 
+  "vendor": "Silicon Labs"
+}
