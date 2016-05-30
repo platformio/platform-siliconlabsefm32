@@ -12,10 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from platformio.managers.platform import BasePlatform
+from platformio.managers.platform import PlatformBase
 
 
-class Siliconlabsefm32Platform(BasePlatform):
+class Siliconlabsefm32Platform(PlatformBase):
 
     def is_embedded(self):
         return True
