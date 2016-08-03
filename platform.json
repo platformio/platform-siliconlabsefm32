@@ -1,0 +1,42 @@
+{
+  "name": "siliconlabsefm32",
+  "title": "Silicon Labs EFM32",
+  "description": "Silicon Labs EFM32 Gecko 32-bit microcontroller (MCU) family includes devices that offer flash memory configurations up to 256 kB, 32 kB of RAM and CPU speeds up to 48 MHz. Based on the powerful ARM Cortex-M core, the Gecko family features innovative low energy techniques, short wake-up time from energy saving modes and a wide selection of peripherals, making it ideal for battery operated applications and other systems requiring high performance and low-energy consumption.",
+  "url": "http://www.silabs.com/products/mcu/32-bit/efm32-gecko/Pages/efm32-gecko.aspx",
+  "homepage": "http://platformio.org/platforms/siliconlabsefm32",
+  "license": {
+    "type": "Apache-2.0",
+    "url": "http://opensource.org/licenses/apache2.0.php"
+  },
+  "engines": {
+    "platformio": "~3.0.0",
+    "scons": ">=2.3.0,<2.6.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/platformio/platform-siliconlabsefm32.git"
+  },
+  "version": "0.1.0",
+  "packageRepositories": [
+    "https://dl.bintray.com/platformio/dl-packages/manifest.json",
+    "https://sourceforge.net/projects/platformio-storage/files/packages/manifest.json/download",
+    "http://dl.platformio.org/packages/manifest.json"
+  ],
+  "frameworks": {
+    "mbed": {
+      "package": "framework-mbed",
+      "script": "builder/frameworks/mbed/mbed.py"
+    }
+  },
+  "packages": {
+    "toolchain-gccarmnoneeabi": {
+      "type": "toolchain",
+      "version": ">=1.40803.0,<1.40805.0"
+    },
+    "framework-mbed": {
+      "type": "framework",
+      "optional": true,
+      "version": "~1.121.0"
+    }
+  }
+}

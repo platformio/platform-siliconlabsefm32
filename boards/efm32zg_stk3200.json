@@ -1,0 +1,17 @@
+{
+  "build": {
+    "cpu": "cortex-m0plus", 
+    "f_cpu": "24000000L", 
+    "mcu": "efm2zg222f32"
+  }, 
+  "frameworks": [
+    "mbed"
+  ], 
+  "name": "Silicon Labs EFM32ZG-STK3200 (Zero Gecko)", 
+  "upload": {
+    "maximum_ram_size": 4096, 
+    "maximum_size": 32768
+  }, 
+  "url": "https://developer.mbed.org/platforms/EFM32-Zero-Gecko/", 
+  "vendor": "Silicon Labs"
+}
