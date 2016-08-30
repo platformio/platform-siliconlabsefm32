@@ -16,5 +16,5 @@ Silicon Labs EFM32 Gecko 32-bit microcontroller (MCU) family includes devices th
 > platformio platform install siliconlabsefm32
 
 # install development version
-> platformio platform install https://github.com/platformio/platform-siliconlabsefm32/archive/develop.zip
+> platformio platform install https://github.com/platformio/platform-siliconlabsefm32.git
 ```
