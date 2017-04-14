@@ -1,17 +1,39 @@
 {
   "build": {
-    "cpu": "cortex-m3", 
-    "f_cpu": "48000000L", 
+    "cpu": "cortex-m3",
+    "f_cpu": "48000000L",
     "mcu": "efm32gg990f1024"
-  }, 
+  },
+  "debug": {
+    "tools": {
+      "j-link": {
+        "server": {
+          "package": "tool-openocd",
+          "executable": "bin/openocd",
+          "arguments": [
+            "-f", "scripts/board/efm32.cfg"
+          ]
+        },
+        "gdbinit": [
+          "target remote :3333",
+          "file $PROG_PATH",
+          "load $PROG_PATH",
+          "monitor init",
+          "monitor reset halt",
+          "tb main"
+        ],
+        "onboard": true
+      }
+    }
+  },
   "frameworks": [
     "mbed"
-  ], 
-  "name": "Silicon Labs EFM32GG-STK3700 (Giant Gecko)", 
+  ],
+  "name": "Silicon Labs EFM32GG-STK3700 (Giant Gecko)",
   "upload": {
-    "maximum_ram_size": 131072, 
+    "maximum_ram_size": 131072,
     "maximum_size": 1048576
-  }, 
-  "url": "https://developer.mbed.org/platforms/EFM32-Giant-Gecko/", 
+  },
+  "url": "https://developer.mbed.org/platforms/EFM32-Giant-Gecko/",
   "vendor": "Silicon Labs"
 }

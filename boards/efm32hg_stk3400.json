@@ -1,17 +1,39 @@
 {
   "build": {
-    "cpu": "cortex-m3", 
-    "f_cpu": "24000000L", 
+    "cpu": "cortex-m3",
+    "f_cpu": "24000000L",
     "mcu": "efm32hg322f64"
-  }, 
+  },
+  "debug": {
+    "tools": {
+      "j-link": {
+        "server": {
+          "package": "tool-openocd",
+          "executable": "bin/openocd",
+          "arguments": [
+            "-f", "scripts/board/efm32.cfg"
+          ]
+        },
+        "gdbinit": [
+          "target remote :3333",
+          "file $PROG_PATH",
+          "load $PROG_PATH",
+          "monitor init",
+          "monitor reset halt",
+          "tb main"
+        ],
+        "onboard": true
+      }
+    }
+  },
   "frameworks": [
     "mbed"
-  ], 
-  "name": "Silicon Labs SLSTK3400A USB-enabled (Happy Gecko)", 
+  ],
+  "name": "Silicon Labs SLSTK3400A USB-enabled (Happy Gecko)",
   "upload": {
-    "maximum_ram_size": 8192, 
+    "maximum_ram_size": 8192,
     "maximum_size": 65536
-  }, 
-  "url": "https://developer.mbed.org/platforms/EFM32-Happy-Gecko/", 
+  },
+  "url": "https://developer.mbed.org/platforms/EFM32-Happy-Gecko/",
   "vendor": "Silicon Labs"
 }

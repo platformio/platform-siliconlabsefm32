@@ -1,17 +1,39 @@
 {
   "build": {
-    "cpu": "cortex-m3", 
-    "f_cpu": "48000000L", 
+    "cpu": "cortex-m3",
+    "f_cpu": "48000000L",
     "mcu": "efm32lg990f256"
-  }, 
+  },
+  "debug": {
+    "tools": {
+      "j-link": {
+        "server": {
+          "package": "tool-openocd",
+          "executable": "bin/openocd",
+          "arguments": [
+            "-f", "scripts/board/efm32.cfg"
+          ]
+        },
+        "gdbinit": [
+          "target remote :3333",
+          "file $PROG_PATH",
+          "load $PROG_PATH",
+          "monitor init",
+          "monitor reset halt",
+          "tb main"
+        ],
+        "onboard": true
+      }
+    }
+  },
   "frameworks": [
     "mbed"
-  ], 
-  "name": "Silicon Labs EFM32LG-STK3600 (Leopard Gecko)", 
+  ],
+  "name": "Silicon Labs EFM32LG-STK3600 (Leopard Gecko)",
   "upload": {
-    "maximum_ram_size": 32768, 
+    "maximum_ram_size": 32768,
     "maximum_size": 262144
-  }, 
-  "url": "https://developer.mbed.org/platforms/EFM32-Leopard-Gecko/", 
+  },
+  "url": "https://developer.mbed.org/platforms/EFM32-Leopard-Gecko/",
   "vendor": "Silicon Labs"
 }
