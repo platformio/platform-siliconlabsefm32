@@ -6,7 +6,7 @@
   },
   "debug": {
     "tools": {
-      "j-link": {
+      "jlink": {
         "server": {
           "package": "tool-openocd",
           "executable": "bin/openocd",
