@@ -1,17 +1,31 @@
 {
   "build": {
-    "cpu": "cortex-m4", 
-    "f_cpu": "48000000L", 
+    "cpu": "cortex-m4",
+    "f_cpu": "48000000L",
     "mcu": "efm32wg990f256"
-  }, 
+  },
+  "debug": {
+    "tools": {
+      "jlink": {
+        "server": {
+          "package": "tool-openocd",
+          "executable": "bin/openocd",
+          "arguments": [
+            "-f", "scripts/board/efm32.cfg"
+          ]
+        },
+        "onboard": true
+      }
+    }
+  },
   "frameworks": [
     "mbed"
-  ], 
-  "name": "Silicon Labs EFM32WG-STK3800 (Wonder Gecko)", 
+  ],
+  "name": "Silicon Labs EFM32WG-STK3800 (Wonder Gecko)",
   "upload": {
-    "maximum_ram_size": 32768, 
+    "maximum_ram_size": 32768,
     "maximum_size": 262144
-  }, 
-  "url": "https://developer.mbed.org/platforms/EFM32-Wonder-Gecko/", 
+  },
+  "url": "https://developer.mbed.org/platforms/EFM32-Wonder-Gecko/",
   "vendor": "Silicon Labs"
 }

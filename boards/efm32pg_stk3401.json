@@ -1,17 +1,31 @@
 {
   "build": {
-    "cpu": "cortex-m4", 
-    "f_cpu": "40000000L", 
+    "cpu": "cortex-m4",
+    "f_cpu": "40000000L",
     "mcu": "efm32pg1b200f256"
-  }, 
+  },
+  "debug": {
+    "tools": {
+      "jlink": {
+        "server": {
+          "package": "tool-openocd",
+          "executable": "bin/openocd",
+          "arguments": [
+            "-f", "scripts/board/efm32.cfg"
+          ]
+        },
+        "onboard": true
+      }
+    }
+  },
   "frameworks": [
     "mbed"
-  ], 
-  "name": "Silicon Labs SLSTK3401A (Pearl Gecko)", 
+  ],
+  "name": "Silicon Labs SLSTK3401A (Pearl Gecko)",
   "upload": {
-    "maximum_ram_size": 32768, 
+    "maximum_ram_size": 32768,
     "maximum_size": 262144
-  }, 
-  "url": "https://developer.mbed.org/platforms/EFM32-Pearl-Gecko/", 
+  },
+  "url": "https://developer.mbed.org/platforms/EFM32-Pearl-Gecko/",
   "vendor": "Silicon Labs"
 }

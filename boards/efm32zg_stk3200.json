@@ -1,17 +1,31 @@
 {
   "build": {
-    "cpu": "cortex-m0plus", 
-    "f_cpu": "24000000L", 
+    "cpu": "cortex-m0plus",
+    "f_cpu": "24000000L",
     "mcu": "efm2zg222f32"
-  }, 
+  },
+  "debug": {
+    "tools": {
+      "jlink": {
+        "server": {
+          "package": "tool-openocd",
+          "executable": "bin/openocd",
+          "arguments": [
+            "-f", "scripts/board/efm32.cfg"
+          ]
+        },
+        "onboard": true
+      }
+    }
+  },
   "frameworks": [
     "mbed"
-  ], 
-  "name": "Silicon Labs EFM32ZG-STK3200 (Zero Gecko)", 
+  ],
+  "name": "Silicon Labs EFM32ZG-STK3200 (Zero Gecko)",
   "upload": {
-    "maximum_ram_size": 4096, 
+    "maximum_ram_size": 4096,
     "maximum_size": 32768
-  }, 
-  "url": "https://developer.mbed.org/platforms/EFM32-Zero-Gecko/", 
+  },
+  "url": "https://developer.mbed.org/platforms/EFM32-Zero-Gecko/",
   "vendor": "Silicon Labs"
 }
