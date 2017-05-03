@@ -33,6 +33,11 @@
       "type": "framework",
       "optional": true,
       "version": "~3.137.0"
+    },
+    "tool-openocd": {
+      "type": "debug",
+      "optional": true,
+      "version": "~1.1000.0"
     }
   }
 }
