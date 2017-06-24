@@ -2,16 +2,21 @@
   "build": {
     "cpu": "cortex-m0plus",
     "f_cpu": "24000000L",
-    "mcu": "efm2zg222f32"
+    "mcu": "efm32zg222f32"
   },
   "debug": {
     "tools": {
       "jlink": {
         "server": {
-          "package": "tool-openocd",
-          "executable": "bin/openocd",
+          "executable": "JLinkGDBServerCL",
           "arguments": [
-            "-f", "scripts/board/efm32.cfg"
+            "-singlerun",
+            "-select",
+            "USB",
+            "-device",
+            "EFM32ZG222F32",
+            "-port",
+            "3333"
           ]
         },
         "onboard": true

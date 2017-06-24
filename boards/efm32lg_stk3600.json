@@ -8,10 +8,15 @@
     "tools": {
       "jlink": {
         "server": {
-          "package": "tool-openocd",
-          "executable": "bin/openocd",
+          "executable": "JLinkGDBServerCL",
           "arguments": [
-            "-f", "scripts/board/efm32.cfg"
+            "-singlerun",
+            "-select",
+            "USB",
+            "-device",
+            "EFM32LG990F256",
+            "-port",
+            "3333"
           ]
         },
         "onboard": true
