@@ -7,19 +7,39 @@
   "debug": {
     "tools": {
       "jlink": {
-        "server": {
-          "executable": "JLinkGDBServerCL",
-          "arguments": [
-            "-singlerun",
-            "-select",
-            "USB",
-            "-device",
-            "EFM32WG990F256",
-            "-port",
-            "3333"
-          ]
-        },
-        "onboard": true
+        "onboard": true,
+        "server": [
+          {
+            "arguments": [
+              "-singlerun",
+              "-if", "SWD",
+              "-select", "USB",
+              "-device", "EFM32WG990F256",
+              "-port", "2331"
+            ],
+            "executable": "JLinkGDBServerCL.exe",
+            "system": [
+              "windows",
+              "windows_amd64",
+              "windows_x86"
+            ]
+          },
+          {
+            "arguments": [
+              "-singlerun",
+              "-if", "SWD",
+              "-select", "USB",
+              "-device", "EFM32WG990F256",
+              "-port", "2331"
+            ],
+            "executable": "JLinkGDBServer",
+            "system": [
+              "darwin_x86_64",
+              "linux_i686",
+              "linux_x86_64"
+            ]
+          }
+        ]
       }
     }
   },
