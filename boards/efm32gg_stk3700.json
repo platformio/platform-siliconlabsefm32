@@ -4,52 +4,19 @@
     "f_cpu": "48000000L",
     "mcu": "efm32gg990f1024"
   },
-  "debug": {
-    "tools": {
-      "jlink": {
-        "onboard": true,
-        "server": [
-          {
-            "arguments": [
-              "-singlerun",
-              "-if", "SWD",
-              "-select", "USB",
-              "-device", "EFM32GG990F1024",
-              "-port", "2331"
-            ],
-            "executable": "JLinkGDBServerCL.exe",
-            "system": [
-              "windows",
-              "windows_amd64",
-              "windows_x86"
-            ]
-          },
-          {
-            "arguments": [
-              "-singlerun",
-              "-if", "SWD",
-              "-select", "USB",
-              "-device", "EFM32GG990F1024",
-              "-port", "2331"
-            ],
-            "executable": "JLinkGDBServer",
-            "system": [
-              "darwin_x86_64",
-              "linux_i686",
-              "linux_x86_64"
-            ]
-          }
-        ]
-      }
-    }
-  },
   "frameworks": [
     "mbed"
   ],
   "name": "Silicon Labs EFM32GG-STK3700 (Giant Gecko)",
   "upload": {
     "maximum_ram_size": 131072,
-    "maximum_size": 1048576
+    "maximum_size": 1048576,
+    "protocol": "mbed",
+    "protocols": [
+      "blackmagic",
+      "jlink",
+      "mbed"
+    ]
   },
   "url": "https://developer.mbed.org/platforms/EFM32-Giant-Gecko/",
   "vendor": "Silicon Labs"

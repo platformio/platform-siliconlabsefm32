@@ -4,52 +4,19 @@
     "f_cpu": "24000000L",
     "mcu": "efm32zg222f32"
   },
-  "debug": {
-    "tools": {
-      "jlink": {
-        "onboard": true,
-        "server": [
-          {
-            "arguments": [
-              "-singlerun",
-              "-if", "SWD",
-              "-select", "USB",
-              "-device", "EFM32ZG222F32",
-              "-port", "2331"
-            ],
-            "executable": "JLinkGDBServerCL.exe",
-            "system": [
-              "windows",
-              "windows_amd64",
-              "windows_x86"
-            ]
-          },
-          {
-            "arguments": [
-              "-singlerun",
-              "-if", "SWD",
-              "-select", "USB",
-              "-device", "EFM32ZG222F32",
-              "-port", "2331"
-            ],
-            "executable": "JLinkGDBServer",
-            "system": [
-              "darwin_x86_64",
-              "linux_i686",
-              "linux_x86_64"
-            ]
-          }
-        ]
-      }
-    }
-  },
   "frameworks": [
     "mbed"
   ],
   "name": "Silicon Labs EFM32ZG-STK3200 (Zero Gecko)",
   "upload": {
     "maximum_ram_size": 4096,
-    "maximum_size": 32768
+    "maximum_size": 32768,
+    "protocol": "mbed",
+    "protocols": [
+      "blackmagic",
+      "jlink",
+      "mbed"
+    ]
   },
   "url": "https://developer.mbed.org/platforms/EFM32-Zero-Gecko/",
   "vendor": "Silicon Labs"

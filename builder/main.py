@@ -12,12 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import sys
 from os.path import join
 
 from SCons.Script import (COMMAND_LINE_TARGETS, AlwaysBuild, Builder, Default,
                           DefaultEnvironment)
 
 env = DefaultEnvironment()
+platform = env.PioPlatform()
 
 env.Replace(
     AR="arm-none-eabi-ar",
@@ -134,11 +136,54 @@ AlwaysBuild(target_size)
 # Target: Upload by default .bin file
 #
 
-target_upload = env.Alias(
-    "upload", target_firm,
-    [env.VerboseAction(env.AutodetectUploadPort, "Looking for upload disk..."),
-     env.VerboseAction(env.UploadToDisk, "Uploading $SOURCE")])
-AlwaysBuild(target_upload)
+upload_protocol = env.subst("$UPLOAD_PROTOCOL")
+debug_tools = env.BoardConfig().get("debug.tools", {})
+upload_actions = []
+
+if upload_protocol == "mbed":
+    upload_actions = [
+        env.VerboseAction(env.AutodetectUploadPort, "Looking for upload disk..."),
+        env.VerboseAction(env.UploadToDisk, "Uploading $SOURCE")
+    ]
+
+elif upload_protocol.startswith("blackmagic"):
+    env.Replace(
+        UPLOADER="$GDB",
+        UPLOADERFLAGS=[
+            "-nx",
+            "--batch",
+            "-ex", "target extended-remote $UPLOAD_PORT",
+            "-ex", "monitor %s_scan" %
+            ("jtag" if upload_protocol == "blackmagic-jtag" else "swdp"),
+            "-ex", "attach 1",
+            "-ex", "load",
+            "-ex", "compare-sections",
+            "-ex", "kill"
+        ],
+        UPLOADCMD="$UPLOADER $UPLOADERFLAGS $BUILD_DIR/${PROGNAME}.elf"
+    )
+    upload_actions = [
+        env.VerboseAction(env.AutodetectUploadPort, "Looking for BlackMagic port..."),
+        env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")
+    ]
+
+elif upload_protocol in debug_tools:
+    env.Replace(
+        UPLOADER="openocd",
+        UPLOADERFLAGS=["-s", platform.get_package_dir("tool-openocd") or ""] +
+        debug_tools.get(upload_protocol).get("server").get("arguments", []) +
+        ["-c", "program {{$SOURCE}} verify reset; shutdown;"],
+        UPLOADCMD="$UPLOADER $UPLOADERFLAGS")
+    upload_actions = [env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")]
+
+# custom upload tool
+elif "UPLOADCMD" in env:
+    upload_actions = [env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")]
+
+else:
+    sys.stderr.write("Warning! Unknown upload protocol %s\n" % upload_protocol)
+
+AlwaysBuild(env.Alias("upload", target_firm, upload_actions))
 
 #
 # Default targets
