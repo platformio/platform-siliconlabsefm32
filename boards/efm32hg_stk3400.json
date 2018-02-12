@@ -4,52 +4,19 @@
     "f_cpu": "24000000L",
     "mcu": "efm32hg322f64"
   },
-  "debug": {
-    "tools": {
-      "jlink": {
-        "onboard": true,
-        "server": [
-          {
-            "arguments": [
-              "-singlerun",
-              "-if", "SWD",
-              "-select", "USB",
-              "-device", "EFM32HG322F64",
-              "-port", "2331"
-            ],
-            "executable": "JLinkGDBServerCL.exe",
-            "system": [
-              "windows",
-              "windows_amd64",
-              "windows_x86"
-            ]
-          },
-          {
-            "arguments": [
-              "-singlerun",
-              "-if", "SWD",
-              "-select", "USB",
-              "-device", "EFM32HG322F64",
-              "-port", "2331"
-            ],
-            "executable": "JLinkGDBServer",
-            "system": [
-              "darwin_x86_64",
-              "linux_i686",
-              "linux_x86_64"
-            ]
-          }
-        ]
-      }
-    }
-  },
   "frameworks": [
     "mbed"
   ],
   "name": "Silicon Labs SLSTK3400A USB-enabled (Happy Gecko)",
   "upload": {
     "maximum_ram_size": 8192,
-    "maximum_size": 65536
+    "maximum_size": 65536,
+    "protocol": "mbed",
+    "protocols": [
+      "blackmagic",
+      "jlink",
+      "mbed"
+    ]
   },
   "url": "https://developer.mbed.org/platforms/EFM32-Happy-Gecko/",
   "vendor": "Silicon Labs"
