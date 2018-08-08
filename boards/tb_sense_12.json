@@ -1,0 +1,33 @@
+{
+  "build": {
+    "cpu": "cortex-m4",
+    "f_cpu": "40000000L",
+    "mcu": "EFR32MG12P432F1024"
+  },
+  "connectivity": [
+    "bluetooth"
+  ],
+  "debug": {
+    "jlink_device": "EFR32MG12PxxxF1024",
+    "onboard_tools": [
+      "jlink"
+    ],
+    "svd_path": "EFR32MG12P432F1024GM48.svd"
+  },
+  "frameworks": [
+    "mbed"
+  ],
+  "name": "Thunderboard Sense 2 Sensor-to-Cloud Advanced IoT",
+  "upload": {
+    "maximum_ram_size": 262144,
+    "maximum_size": 1048576,
+    "protocol": "mbed",
+    "protocols": [
+      "blackmagic",
+      "jlink",
+      "mbed"
+    ]
+  },
+  "url": "https://www.silabs.com/products/development-tools/thunderboard/thunderboard-sense-two-kit",
+  "vendor": "Silicon Labs"
+}
