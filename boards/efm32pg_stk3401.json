@@ -2,12 +2,19 @@
   "build": {
     "cpu": "cortex-m4",
     "f_cpu": "40000000L",
-    "mcu": "efm32pg1b200f256"
+    "mcu": "efm32pg1b200f256gm48"
+  },
+  "debug": {
+    "jlink_device": "EFM32PG1B200F256GM48",
+    "onboard_tools": [
+      "jlink"
+    ],
+    "svd_path": "EFM32PG1B200F256GM48.svd"
   },
   "frameworks": [
     "mbed"
   ],
-  "name": "Silicon Labs SLSTK3401A (Pearl Gecko)",
+  "name": "SLSTK3401A Pearl Gecko PG1",
   "upload": {
     "maximum_ram_size": 32768,
     "maximum_size": 262144,
@@ -18,6 +25,6 @@
       "mbed"
     ]
   },
-  "url": "https://developer.mbed.org/platforms/EFM32-Pearl-Gecko/",
+  "url": "https://www.silabs.com/products/development-tools/mcu/32-bit/efm32-pearl-gecko-starter-kit",
   "vendor": "Silicon Labs"
 }

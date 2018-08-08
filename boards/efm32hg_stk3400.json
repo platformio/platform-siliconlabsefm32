@@ -1,13 +1,20 @@
 {
   "build": {
-    "cpu": "cortex-m3",
-    "f_cpu": "24000000L",
+    "cpu": "cortex-m0plus",
+    "f_cpu": "25000000L",
     "mcu": "efm32hg322f64"
+  },
+  "debug": {
+    "jlink_device": "EFM32HG322F64",
+    "onboard_tools": [
+      "jlink"
+    ],
+    "svd_path": "EFM32HG322F64.svd"
   },
   "frameworks": [
     "mbed"
   ],
-  "name": "Silicon Labs SLSTK3400A USB-enabled (Happy Gecko)",
+  "name": "SLSTK3400A USB-enabled Happy Gecko",
   "upload": {
     "maximum_ram_size": 8192,
     "maximum_size": 65536,
@@ -18,6 +25,6 @@
       "mbed"
     ]
   },
-  "url": "https://developer.mbed.org/platforms/EFM32-Happy-Gecko/",
+  "url": "https://www.silabs.com/products/development-tools/mcu/32-bit/efm32-happy-gecko-starter-kit",
   "vendor": "Silicon Labs"
 }
