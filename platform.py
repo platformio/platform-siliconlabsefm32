@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from platform import system
+
 from platformio.managers.platform import PlatformBase
 
 
@@ -48,17 +50,23 @@ class Siliconlabsefm32Platform(PlatformBase):
                     "require_debug_port": True
                 }
             else:
-                server_args = [
-                    "-f", "scripts/interface/%s.cfg" % link,
-                    "-f", "scripts/target/efm32.cfg"
-                ]
+                assert debug.get("jlink_device"), (
+                    "Missed J-Link Device ID for %s" % board.id)
                 debug['tools'][link] = {
-                    "onboard": True,
                     "server": {
-                        "package": "tool-openocd",
-                        "executable": "bin/openocd",
-                        "arguments": server_args
-                    }
+                        "package": "tool-jlink",
+                        "arguments": [
+                            "-singlerun",
+                            "-if", "SWD",
+                            "-select", "USB",
+                            "-device", debug.get("jlink_device"),
+                            "-port", "2331"
+                        ],
+                        "executable": ("JLinkGDBServerCL.exe"
+                                       if system() == "Windows" else
+                                       "JLinkGDBServer")
+                    },
+                    "onboard": link in debug.get("onboard_tools", [])
                 }
 
         board.manifest['debug'] = debug

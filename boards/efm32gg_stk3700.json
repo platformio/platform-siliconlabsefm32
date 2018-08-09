@@ -4,10 +4,17 @@
     "f_cpu": "48000000L",
     "mcu": "efm32gg990f1024"
   },
+  "debug": {
+    "jlink_device": "EFM32GG990F1024",
+    "onboard_tools": [
+      "jlink"
+    ],
+    "svd_path": "EFM32GG990F1024.svd"
+  },
   "frameworks": [
     "mbed"
   ],
-  "name": "Silicon Labs EFM32GG-STK3700 (Giant Gecko)",
+  "name": "EFM32GG-STK3700 Giant Gecko",
   "upload": {
     "maximum_ram_size": 131072,
     "maximum_size": 1048576,
@@ -18,6 +25,6 @@
       "mbed"
     ]
   },
-  "url": "https://developer.mbed.org/platforms/EFM32-Giant-Gecko/",
+  "url": "https://www.silabs.com/products/development-tools/mcu/32-bit/efm32-giant-gecko-starter-kit",
   "vendor": "Silicon Labs"
 }

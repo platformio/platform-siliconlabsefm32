@@ -13,7 +13,9 @@
 # limitations under the License.
 
 import sys
-from os.path import join
+from platform import system
+from os import makedirs
+from os.path import isdir, join
 
 from SCons.Script import (COMMAND_LINE_TARGETS, AlwaysBuild, Builder, Default,
                           DefaultEnvironment)
@@ -33,34 +35,6 @@ env.Replace(
 
     ARFLAGS=["rc"],
 
-    ASFLAGS=["-x", "assembler-with-cpp"],
-
-    CCFLAGS=[
-        "-Os",  # optimize for size
-        "-ffunction-sections",  # place each function in its own section
-        "-fdata-sections",
-        "-Wall",
-        "-mthumb",
-        "-nostdlib"
-    ],
-
-    CXXFLAGS=[
-        "-fno-rtti",
-        "-fno-exceptions"
-    ],
-
-    CPPDEFINES=[
-        ("F_CPU", "$BOARD_F_CPU")
-    ],
-
-    LINKFLAGS=[
-        "-Os",
-        "-Wl,--gc-sections,--relax",
-        "-mthumb"
-    ],
-
-    LIBS=["c", "gcc", "m"],
-
     SIZEPROGREGEXP=r"^(?:\.text|\.data|\.rodata|\.text.align|\.ARM.exidx)\s+(\d+).*",
     SIZEDATAREGEXP=r"^(?:\.data|\.bss|\.noinit)\s+(\d+).*",
     SIZECHECKCMD="$SIZETOOL -A -d $SOURCES",
@@ -73,19 +47,7 @@ env.Replace(
 if env.get("PROGNAME", "program") == "program":
     env.Replace(PROGNAME="firmware")
 
-if "BOARD" in env:
-    env.Append(
-        CCFLAGS=[
-            "-mcpu=%s" % env.BoardConfig().get("build.cpu")
-        ],
-        LINKFLAGS=[
-            "-mcpu=%s" % env.BoardConfig().get("build.cpu")
-        ]
-    )
-
 env.Append(
-    ASFLAGS=env.get("CCFLAGS", [])[:],
-
     BUILDERS=dict(
         ElfToBin=Builder(
             action=env.VerboseAction(" ".join([
@@ -111,6 +73,9 @@ env.Append(
         )
     )
 )
+
+if not env.get("PIOFRAMEWORK"):
+    env.SConscript("frameworks/_bare.py")
 
 #
 # Target: Build executable and linkable firmware
@@ -170,14 +135,31 @@ elif upload_protocol.startswith("blackmagic"):
         env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")
     ]
 
-elif upload_protocol in debug_tools:
+elif upload_protocol.startswith("jlink"):
+
+    def _jlink_cmd_script(env, source):
+        build_dir = env.subst("$BUILD_DIR")
+        if not isdir(build_dir):
+            makedirs(build_dir)
+        script_path = join(build_dir, "upload.jlink")
+        commands = ["h", "loadbin %s,0x0" % source, "r", "q"]
+        with open(script_path, "w") as fp:
+            fp.write("\n".join(commands))
+        return script_path
+
     env.Replace(
-        UPLOADER="openocd",
-        UPLOADERFLAGS=["-s", platform.get_package_dir("tool-openocd") or ""] +
-        debug_tools.get(upload_protocol).get("server").get("arguments", []) +
-        ["-c", "program {{$SOURCE}} verify reset; shutdown;"],
-        UPLOADCMD="$UPLOADER $UPLOADERFLAGS")
+        __jlink_cmd_script=_jlink_cmd_script,
+        UPLOADER="JLink.exe" if system() == "Windows" else "JLinkExe",
+        UPLOADERFLAGS=[
+            "-device", env.BoardConfig().get("debug", {}).get("jlink_device"),
+            "-speed", "4000",
+            "-if", ("jtag" if upload_protocol == "jlink-jtag" else "swd"),
+            "-autoconnect", "1"
+        ],
+        UPLOADCMD='$UPLOADER $UPLOADERFLAGS -CommanderScript "${__jlink_cmd_script(__env__, SOURCE)}"'
+    )
     upload_actions = [env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")]
+
 
 # custom upload tool
 elif "UPLOADCMD" in env:

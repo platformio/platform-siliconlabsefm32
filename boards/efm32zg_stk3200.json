@@ -4,10 +4,17 @@
     "f_cpu": "24000000L",
     "mcu": "efm32zg222f32"
   },
+  "debug": {
+    "jlink_device": "EFM32ZG222F32",
+    "onboard_tools": [
+      "jlink"
+    ],
+    "svd_path": "EFM32ZG222F32.svd"
+  },
   "frameworks": [
     "mbed"
   ],
-  "name": "Silicon Labs EFM32ZG-STK3200 (Zero Gecko)",
+  "name": "EFM32ZG-STK3200 Zero Gecko",
   "upload": {
     "maximum_ram_size": 4096,
     "maximum_size": 32768,
@@ -18,6 +25,6 @@
       "mbed"
     ]
   },
-  "url": "https://developer.mbed.org/platforms/EFM32-Zero-Gecko/",
+  "url": "https://www.silabs.com/products/development-tools/mcu/32-bit/efm32-zero-gecko-starter-kit",
   "vendor": "Silicon Labs"
 }

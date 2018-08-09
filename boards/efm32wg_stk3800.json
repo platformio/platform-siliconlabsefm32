@@ -4,10 +4,17 @@
     "f_cpu": "48000000L",
     "mcu": "efm32wg990f256"
   },
+  "debug": {
+    "jlink_device": "EFM32WG990F256",
+    "onboard_tools": [
+      "jlink"
+    ],
+    "svd_path": "EFM32WG990F256.svd"
+  },
   "frameworks": [
     "mbed"
   ],
-  "name": "Silicon Labs EFM32WG-STK3800 (Wonder Gecko)",
+  "name": "EFM32WG-STK3800 Wonder Gecko",
   "upload": {
     "maximum_ram_size": 32768,
     "maximum_size": 262144,
@@ -18,6 +25,6 @@
       "mbed"
     ]
   },
-  "url": "https://developer.mbed.org/platforms/EFM32-Wonder-Gecko/",
+  "url": "https://www.silabs.com/products/development-tools/mcu/32-bit/efm32-wonder-gecko-starter-kit",
   "vendor": "Silicon Labs"
 }
