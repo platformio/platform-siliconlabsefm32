@@ -2,7 +2,10 @@
   "build": {
     "cpu": "cortex-m0plus",
     "f_cpu": "25000000L",
-    "mcu": "efm32hg322f64"
+    "mcu": "efm32hg322f64",
+    "zephyr": {
+       "variant": "efm32hg_slstk3400a"
+    }
   },
   "debug": {
     "jlink_device": "EFM32HG322F64",
@@ -12,7 +15,8 @@
     "svd_path": "EFM32HG322F64.svd"
   },
   "frameworks": [
-    "mbed"
+    "mbed",
+    "zephyr"
   ],
   "name": "SLSTK3400A USB-enabled Happy Gecko",
   "upload": {

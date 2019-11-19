@@ -7,7 +7,20 @@ env:
   - PLATFORMIO_PROJECT_DIR=examples/mbed-blink
   - PLATFORMIO_PROJECT_DIR=examples/mbed-dsp
   - PLATFORMIO_PROJECT_DIR=examples/mbed-serial
+  - PLATFORMIO_PROJECT_DIR=examples/zephyr-blink
+  - PLATFORMIO_PROJECT_DIR=examples/zephyr-sensor-vl53l0x
+  - PLATFORMIO_PROJECT_DIR=examples/zephyr-subsys-console-getline
 
+# Zephyr framework doesn't support python 2
+jobs:
+  exclude:
+    - python: "2.7"
+      env: PLATFORMIO_PROJECT_DIR=examples/zephyr-blink
+    - python: "2.7"
+      env: PLATFORMIO_PROJECT_DIR=examples/zephyr-sensor-vl53l0x
+    - python: "2.7"
+      env: PLATFORMIO_PROJECT_DIR=examples/zephyr-subsys-console-getline
+  
 install:
   - pip install -U https://github.com/platformio/platformio/archive/develop.zip
   - platformio platform install file://.
