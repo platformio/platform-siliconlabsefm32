@@ -4,9 +4,6 @@ python:
   - "3.6"
 
 env:
-  - PLATFORMIO_PROJECT_DIR=examples/mbed-blink
-  - PLATFORMIO_PROJECT_DIR=examples/mbed-dsp
-  - PLATFORMIO_PROJECT_DIR=examples/mbed-serial
   - PLATFORMIO_PROJECT_DIR=examples/zephyr-blink
   # - PLATFORMIO_PROJECT_DIR=examples/zephyr-sensor-vl53l0x
   - PLATFORMIO_PROJECT_DIR=examples/zephyr-subsys-console-getline
