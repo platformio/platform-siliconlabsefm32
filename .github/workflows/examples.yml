@@ -10,9 +10,11 @@ jobs:
         os: [ubuntu-16.04, windows-latest, macos-latest]
         python-version: [2.7, 3.7]
         example:
-          - "examples/mbed-blink"
-          - "examples/mbed-dsp"
-          - "examples/mbed-serial"
+          - "examples/mbed-rtos-blink-baremetal"
+          - "examples/mbed-rtos-semaphore"
+          - "examples/mbed-rtos-usb-cdc"
+          - "examples/mbed-legacy-examples/mbed-events"
+          - "examples/mbed-legacy-examples/mbed-serial"
           - "examples/zephyr-blink"
           - "examples/zephyr-custom-module"
           - "examples/zephyr-subsys-console-getline"
