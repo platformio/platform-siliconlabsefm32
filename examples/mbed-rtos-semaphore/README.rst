@@ -20,7 +20,7 @@ How to build PlatformIO based project
 .. code-block:: bash
 
     # Change directory to example
-    > cd platform-siliconlabsefm32/examples/mbed-events
+    > cd platform-siliconlabsefm32/examples/mbed-blink-baremetal
 
     # Build project
     > platformio run
@@ -29,10 +29,10 @@ How to build PlatformIO based project
     > platformio run --target upload
 
     # Build specific environment
-    > platformio run -e efm32wg_stk3800
+    > platformio run -e efm32gg_stk3700
 
     # Upload firmware for the specific environment
-    > platformio run -e efm32wg_stk3800 --target upload
+    > platformio run -e efm32gg_stk3700 --target upload
 
     # Clean build files
     > platformio run --target clean
