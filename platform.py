@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import copy
 import json
 import os
 
@@ -41,7 +42,6 @@ class Siliconlabsefm32Platform(PlatformBase):
                 if p.startswith("framework-zephyr-") or p in (
                     "tool-cmake", "tool-dtc", "tool-ninja"):
                     self.packages[p]["optional"] = False
-            self.packages["toolchain-gccarmnoneeabi"]["version"] = "~1.80201.0"
             if "windows" not in get_systype():
                 self.packages["tool-gperf"]["optional"] = False
 
@@ -96,3 +96,15 @@ class Siliconlabsefm32Platform(PlatformBase):
 
         board.manifest["debug"] = debug
         return board
+
+    def configure_debug_options(self, initial_debug_options, ide_data):
+        debug_options = copy.deepcopy(initial_debug_options)
+        server_executable = debug_options["server"]["executable"].lower()
+        adapter_speed = initial_debug_options.get("speed")
+        if adapter_speed:
+            if "jlink" in server_executable:
+                debug_options["server"]["arguments"].extend(
+                    ["-speed", adapter_speed]
+                )
+
+        return debug_options
