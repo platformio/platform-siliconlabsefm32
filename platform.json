@@ -19,7 +19,7 @@
     "type": "git",
     "url": "https://github.com/platformio/platform-siliconlabsefm32.git"
   },
-  "version": "8.1.0",
+  "version": "8.2.0",
   "frameworks": {
     "mbed": {
       "package": "framework-mbed",
