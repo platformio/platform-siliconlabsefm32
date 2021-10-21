@@ -2,7 +2,10 @@
   "build": {
     "cpu": "cortex-m4",
     "f_cpu": "40000000L",
-    "mcu": "EFR32MG12P432F1024"
+    "mcu": "EFR32MG12P432F1024",
+    "zephyr": {
+       "variant": "efr32mg_sltb004a"
+    }
   },
   "connectivity": [
     "bluetooth"
@@ -15,7 +18,8 @@
     "svd_path": "EFR32MG12P432F1024GM48.svd"
   },
   "frameworks": [
-    "mbed"
+    "mbed",
+    "zephyr"
   ],
   "name": "Thunderboard Sense 2 Sensor-to-Cloud Advanced IoT",
   "upload": {
