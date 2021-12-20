@@ -21,6 +21,13 @@
   },
   "version": "9.0.0",
   "frameworks": {
+    "gecko-sdk": {
+      "package": "framework-gecko-sdk",
+      "script": "builder/frameworks/gecko-sdk/gecko-sdk.py",
+      "description": "The Gecko SDK is software development kit developed by Silicon Labs for the EFM32, EFR32 and EZR32. It contains the basic software needed for development, covering everything from the low-level hardware abstraction layer (HAL) and peripheral drivers to communication stacks and example code.",
+      "homepage": "https://docs.silabs.com/gecko-platform",
+      "title": "Gecko SDK"
+    },
     "mbed": {
       "package": "framework-mbed",
       "script": "builder/frameworks/mbed.py"
@@ -38,6 +45,12 @@
       "optionalVersions": [
         "~1.90201.0"
       ]
+    },
+    "framework-gecko-sdk": {
+      "type": "framework",
+      "optional": true,
+      "owner": "platformio",
+      "version": "~3.2.0"
     },
     "framework-mbed": {
       "type": "framework",
@@ -79,6 +92,16 @@
       "optional": true,
       "owner": "platformio",
       "version": "^3.0.0"
+    },
+    "corretto-jdk-portable": {
+      "optional": true,
+      "owner": "platformio",
+      "version": "~1.170001.0"
+    },
+    "tool-silabs-slc-cli": {
+      "optional": true,
+      "owner": "platformio",
+      "version": "~1.0.0"
     }
   }
 }

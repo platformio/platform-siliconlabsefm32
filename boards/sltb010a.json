@@ -1,0 +1,32 @@
+{
+  "build": {
+    "cpu": "cortex-m33",
+    "f_cpu": "76800000L",
+    "mcu": "efr32bg22c224f512im40"
+  },
+  "connectivity": [
+    "bluetooth"
+  ],
+  "debug": {
+    "jlink_device": "EFR32BG22CxxxF512",
+    "onboard_tools": [
+      "jlink"
+    ],
+    "svd_path": "EFR32BG22.svd"
+  },
+  "frameworks": [
+    "gecko-sdk"
+  ],
+  "name": "SLTB010A Thunderboard BG22 Kit",
+  "upload": {
+    "maximum_ram_size": 32768,
+    "maximum_size": 524288,
+    "protocol": "jlink",
+    "protocols": [
+      "jlink",
+      "mbed"
+    ]
+  },
+  "url": "https://www.silabs.com/development-tools/thunderboard/thunderboard-bg22-kit",
+  "vendor": "Silicon Labs"
+}
