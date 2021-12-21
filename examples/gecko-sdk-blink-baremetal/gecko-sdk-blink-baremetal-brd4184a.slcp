@@ -1,0 +1,18 @@
+project_name: blink_baremetal
+package: platform
+quality: production
+label: Platform - Blink Bare-metal
+description: > 
+  This example project shows how to blink an LED in a bare-metal configuration.
+category: Example|Platform
+component:
+  - id: sl_system
+  - id: device_init
+  - id: sleeptimer
+  - {id: brd4184a}
+  - id: simple_led
+    instance: [led0]
+define:
+  - name: DEBUG_EFM
+tag:
+  - hardware:component:led:1+

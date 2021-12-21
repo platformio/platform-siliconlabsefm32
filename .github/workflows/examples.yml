@@ -10,6 +10,10 @@ jobs:
         os: [ubuntu-18.04, windows-latest, macos-latest]
         python-version: [3.7]
         example:
+          - "examples/gecko-sdk-ble-thunderboard"
+          - "examples/gecko-sdk-blink-baremetal"
+          - "examples/gecko-sdk-cpp"
+          - "examples/gecko-sdk-iostream-usart-baremetal"
           - "examples/mbed-rtos-blink-baremetal"
           - "examples/mbed-rtos-semaphore"
           - "examples/mbed-rtos-usb-cdc"

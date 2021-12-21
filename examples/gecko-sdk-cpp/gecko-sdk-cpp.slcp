@@ -1,0 +1,27 @@
+# Silicon Labs Project Configuration Tools: slcp, v0, Component selection file.
+project_name: empty_cpp
+label: empty_cpp
+description: |
+  This example project shows an empty configuration that can be used as a starting point to add components and functionality.
+category: Example|Platform
+package: platform
+quality: production
+source:
+- {path: src/app.cpp}
+- {path: src/main.cpp}
+include:
+- path: ''
+  file_list:
+  - {path: src/app.h}
+sdk: {id: gecko_sdk, version: 3.2.2}
+toolchain_settings: []
+component:
+- {id: sl_system}
+- {id: device_init}
+- {id: brd4184a}
+- {id: cpp_support}
+- {id: EFR32BG22C224F512IM40}
+define:
+- {name: DEBUG_EFM}
+ui_hints: {}
+
