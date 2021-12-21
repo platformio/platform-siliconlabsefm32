@@ -395,6 +395,11 @@ process_build_flags(project_config)
 process_project_includes(project_config)
 process_project_libraries(project_config)
 
+# Temporary fix as SLC CLI doesn't export all flags
+env.Append(
+    LINKFLAGS=["--specs=nosys.specs"]
+)
+
 #
 # Target: Build project sources
 #
