@@ -130,10 +130,11 @@ def reload_sdk_configuration(board_config, slcp_config_path):
 def run_slc_cli(args):
     # The SLC tool is run in an isolated environment with a portable JDK package
     sdk_env = os.environ.copy()
-    sdk_env["PATH"] = (
-        os.path.join(platform.get_package_dir("corretto-jdk-portable"), "bin")
-        + ";"
-        + sdk_env["PATH"]
+    sdk_env["PATH"] = os.pathsep.join(
+        [
+            os.path.join(platform.get_package_dir("corretto-jdk-portable"), "bin"),
+            sdk_env["PATH"],
+        ]
     )
 
     cmd = (
