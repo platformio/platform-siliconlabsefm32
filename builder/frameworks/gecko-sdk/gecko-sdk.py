@@ -30,7 +30,7 @@ import subprocess
 import sys
 
 import click
-from SCons.Script import ARGUMENTS, DefaultEnvironment
+from SCons.Script import ARGUMENTS, COMMAND_LINE_TARGETS, DefaultEnvironment
 
 from platformio.compat import hashlib_encode_data
 
@@ -95,6 +95,7 @@ def get_project_slcp_file():
 
 
 def reload_sdk_configuration(board_config, slcp_config_path):
+    make_sdk_trusted()
 
     if not os.path.isdir(BUILD_DIR):
         os.makedirs(BUILD_DIR)
