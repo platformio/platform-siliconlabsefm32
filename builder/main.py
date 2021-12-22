@@ -154,7 +154,7 @@ elif upload_protocol.startswith("jlink"):
         script_path = join(build_dir, "upload.jlink")
         commands = [
             "h",
-            "loadbin %s, %s" % (source, env.BoardConfig().get(
+            'loadbin "%s", %s' % (source, env.BoardConfig().get(
                 "upload.offset_address", "0x0")),
             "r",
             "q"
