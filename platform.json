@@ -49,7 +49,7 @@
     "framework-gecko-sdk": {
       "type": "framework",
       "optional": true,
-      "owner": "platformio",
+      "owner": "siliconlabs",
       "version": "~4.0.0"
     },
     "framework-mbed": {
@@ -100,7 +100,7 @@
     },
     "tool-silabs-slc-cli": {
       "optional": true,
-      "owner": "platformio",
+      "owner": "siliconlabs",
       "version": "~1.0.0"
     }
   }
