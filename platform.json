@@ -98,7 +98,7 @@
       "owner": "platformio",
       "version": "~1.170001.0"
     },
-    "tool-silabs-slc-cli": {
+    "tool-slc-cli": {
       "optional": true,
       "owner": "siliconlabs",
       "version": "~1.0.0"
