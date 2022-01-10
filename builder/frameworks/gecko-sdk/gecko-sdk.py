@@ -30,7 +30,7 @@ import subprocess
 import sys
 
 import click
-from SCons.Script import ARGUMENTS, COMMAND_LINE_TARGETS, DefaultEnvironment
+from SCons.Script import ARGUMENTS, DefaultEnvironment
 
 from platformio.compat import hashlib_encode_data
 
@@ -142,7 +142,7 @@ def run_slc_cli(args):
         env.subst("$PYTHONEXE"),
         "%s"
         % os.path.join(
-            platform.get_package_dir("tool-silabs-slc-cli"),
+            platform.get_package_dir("tool-slc-cli"),
             "slc",
         ),
     ) + args
@@ -172,7 +172,7 @@ def is_sdk_reload_required(slcp_config_path):
 
     for dep_dir in (
         SDK_DIR,
-        platform.get_package_dir("tool-silabs-slc-cli"),
+        platform.get_package_dir("tool-slc-cli"),
         platform.get_package_dir("toolchain-gccarmnoneeabi"),
     ):
         if os.path.getmtime(dep_dir) > os.path.getmtime(EXPORTED_SDK_CONFIG_FILE):

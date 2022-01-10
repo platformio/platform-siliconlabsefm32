@@ -44,7 +44,7 @@ class Siliconlabsefm32Platform(PlatformBase):
             if "windows" not in get_systype():
                 self.packages["tool-gperf"]["optional"] = False
         elif "gecko-sdk" in frameworks:
-            for p in ("corretto-jdk-portable", "tool-silabs-slc-cli"):
+            for p in ("corretto-jdk-portable", "tool-slc-cli"):
                 self.packages[p]["optional"] = False
 
         return PlatformBase.configure_default_packages(self, variables, targets)
