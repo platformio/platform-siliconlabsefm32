@@ -48,7 +48,7 @@
     },
     "framework-gecko-sdk": {
       "type": "framework",
-      "optional": true,
+      "optional": false,
       "owner": "siliconlabs",
       "version": "~4.0.0"
     },
@@ -94,12 +94,12 @@
       "version": "^3.0.0"
     },
     "corretto-jdk-portable": {
-      "optional": true,
+      "optional": false,
       "owner": "platformio",
       "version": "~1.170001.0"
     },
     "tool-slc-cli": {
-      "optional": true,
+      "optional": false,
       "owner": "siliconlabs",
       "version": "~1.0.0"
     }
