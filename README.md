@@ -1,4 +1,4 @@
-# Silicon Labs EFM32: development platform for [PlatformIO](http://platformio.org)
+# Silicon Labs EFM32: development platform for [PlatformIO](https://platformio.org)
 
 [![Build Status](https://github.com/platformio/platform-siliconlabsefm32/workflows/Examples/badge.svg)](https://github.com/platformio/platform-siliconlabsefm32/actions)
 
@@ -9,7 +9,7 @@ Silicon Labs EFM32 Gecko 32-bit microcontroller (MCU) family includes devices th
 
 # Usage
 
-1. [Install PlatformIO](http://platformio.org)
+1. [Install PlatformIO](https://platformio.org)
 2. Create PlatformIO project and configure a platform option in [platformio.ini](https://docs.platformio.org/page/projectconf.html) file:
 
 ## Stable version

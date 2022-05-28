@@ -15,10 +15,11 @@
 import copy
 import json
 import os
+import sys
 
-from platformio.managers.platform import PlatformBase
-from platformio.util import get_systype
+from platformio.public import PlatformBase
 
+IS_WINDOWS = sys.platform.startswith("win")
 
 class Siliconlabsefm32Platform(PlatformBase):
 
@@ -41,13 +42,13 @@ class Siliconlabsefm32Platform(PlatformBase):
             for p in self.packages:
                 if p in ("tool-cmake", "tool-dtc", "tool-ninja"):
                     self.packages[p]["optional"] = False
-            if "windows" not in get_systype():
+            if not IS_WINDOWS:
                 self.packages["tool-gperf"]["optional"] = False
 
-        return PlatformBase.configure_default_packages(self, variables, targets)
+        return super().configure_default_packages(variables, targets)
 
     def get_boards(self, id_=None):
-        result = PlatformBase.get_boards(self, id_)
+        result = super().get_boards(id_)
         if not result:
             return result
         if id_:
@@ -87,7 +88,7 @@ class Siliconlabsefm32Platform(PlatformBase):
                             "-port", "2331"
                         ],
                         "executable": ("JLinkGDBServerCL.exe"
-                                       if "windows" in get_systype() else
+                                       if IS_WINDOWS else
                                        "JLinkGDBServer")
                     },
                     "onboard": link in debug.get("onboard_tools", [])
