@@ -15,7 +15,6 @@
     "svd_path": "EFM32HG322F64.svd"
   },
   "frameworks": [
-    "mbed",
     "zephyr"
   ],
   "name": "SLSTK3400A USB-enabled Happy Gecko",
