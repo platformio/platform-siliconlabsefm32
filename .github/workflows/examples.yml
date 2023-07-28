@@ -12,8 +12,6 @@ jobs:
           - "examples/mbed-rtos-blink-baremetal"
           - "examples/mbed-rtos-semaphore"
           - "examples/mbed-rtos-usb-cdc"
-          - "examples/mbed-legacy-examples/mbed-events"
-          - "examples/mbed-legacy-examples/mbed-serial"
           - "examples/zephyr-blink"
           - "examples/zephyr-custom-module"
           - "examples/zephyr-subsys-console-getline"

@@ -12,7 +12,6 @@
     "svd_path": "EFM32WG990F256.svd"
   },
   "frameworks": [
-    "mbed",
     "zephyr"
   ],
   "name": "EFM32WG-STK3800 Wonder Gecko",
