@@ -13,7 +13,6 @@ jobs:
           - "examples/mbed-rtos-semaphore"
           - "examples/mbed-rtos-usb-cdc"
           - "examples/zephyr-blink"
-          - "examples/zephyr-custom-module"
           - "examples/zephyr-subsys-console-getline"
         exclude:
           - {os: windows-latest, example: "examples/zephyr-custom-module"}

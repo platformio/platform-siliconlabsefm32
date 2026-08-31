@@ -4,7 +4,7 @@
     "f_cpu": "25000000L",
     "mcu": "efm32hg322f64",
     "zephyr": {
-       "variant": "efm32hg_slstk3400a"
+       "variant": "slstk3400a"
     }
   },
   "debug": {
