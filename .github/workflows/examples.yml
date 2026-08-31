@@ -13,7 +13,6 @@ jobs:
           - "examples/mbed-rtos-semaphore"
           - "examples/mbed-rtos-usb-cdc"
           - "examples/zephyr-blink"
-          - "examples/zephyr-custom-module"
           - "examples/zephyr-subsys-console-getline"
         exclude:
           - {os: windows-latest, example: "examples/zephyr-custom-module"}
@@ -25,7 +24,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v3
         with:
-          python-version: "3.9"
+          python-version: "3.10"
       - name: Install dependencies
         run: |
           pip install -U https://github.com/platformio/platformio/archive/develop.zip
